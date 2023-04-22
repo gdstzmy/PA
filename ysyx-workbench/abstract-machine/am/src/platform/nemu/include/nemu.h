@@ -4,7 +4,7 @@
 #include <klib-macros.h>
 
 #include ISA_H // the macro `ISA_H` is defined in CFLAGS
-               // it will be expanded as "x86/x86.h", "mips/mips32.h", ...
+// it will be expanded as "x86/x86.h", "mips/mips32.h", ...
 
 #if defined(__ISA_X86__)
 # define nemu_trap(code) asm volatile ("int3" : :"a"(code))
@@ -12,8 +12,6 @@
 # define nemu_trap(code) asm volatile ("move $v0, %0; sdbbp" : :"r"(code))
 #elif defined(__ISA_RISCV32__) || defined(__ISA_RISCV64__)
 # define nemu_trap(code) asm volatile("mv a0, %0; ebreak" : :"r"(code))
-#elif defined(__ISA_LOONGARCH32R__)
-# define nemu_trap(code) asm volatile("move $a0, %0; break 0" : :"r"(code))
 #elif
 # error unsupported ISA __ISA__
 #endif
