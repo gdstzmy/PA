@@ -17,9 +17,5 @@ typedef union {
 } PCB;
 
 extern PCB *current;
-extern Context* schedule(Context* prev);
-extern void naive_uload(PCB* pcb, const char* filename);
-extern void context_kload(PCB* pcb_p, void (*entry)(void*), void* arg);
-extern void context_uload(PCB *pcb, const char *filename, char *const argv[], char *const envp[]);
-extern void switch_boot_pcb();
+
 #endif
