@@ -31,6 +31,13 @@ typedef struct {
 	SDL_Color *colors;
 } SDL_Palette;
 
+typedef union {
+	struct {
+		uint8_t b, g, r, a;
+	};
+	uint32_t val;
+} SDL_Color2;
+
 typedef struct {
 	SDL_Palette *palette;
 	uint8_t BitsPerPixel;

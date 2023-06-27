@@ -35,7 +35,7 @@ __am_asm_trap:
   sd t0, OFFSET_CAUSE(sp)
   sd t1, OFFSET_STATUS(sp)
   sd t2, OFFSET_EPC(sp)
-
+ 
   mv a0, sp
   jal __am_irq_handle
 

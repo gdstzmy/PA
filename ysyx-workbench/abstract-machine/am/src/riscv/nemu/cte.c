@@ -9,7 +9,7 @@
 static Context* (*user_handler)(Event, Context*) = NULL;
 
 Context* __am_irq_handle(Context *c) {
-  printf("begin __am_irq_handle\n");
+  //printf("begin __am_irq_handle\n");
 
 
   if (user_handler) {
@@ -26,11 +26,11 @@ Context* __am_irq_handle(Context *c) {
       break;
       default: ev.event = EVENT_ERROR; break;
     }
-    printf("user_handler\n");
+    //printf("user_handler\n");
 
     c = user_handler(ev, c); //do_event
     assert(c != NULL);
-    printf("AFTER______user_handler\n");
+    //printf("AFTER______user_handler\n");
 
   }
 
@@ -47,7 +47,7 @@ extern void __am_asm_trap(void);
 bool cte_init(Context* (*handler)(Event, Context*)) {
   // initialize exception entry
   asm volatile("csrw mtvec, %0" : : "r"(__am_asm_trap));
-  printf("after set mtvec\n");
+  //printf("after set mtvec\n");
 
   // register event handler
   user_handler = handler;

@@ -9,10 +9,10 @@ module led(
 
 always @ (sw)
 case(sw[1:0])
-0:assign ledr[0] = 1;
-1:assign ledr[1] = 1;
-2:assign ledr[2] = 1;
-3:assign ledr[3] = 1;
+0:assign ledr[1:0] = sw[3:2];
+1:assign ledr[1:0] = sw[5:4];
+2:assign ledr[1:0] = sw[7:6];
+3:assign ledr[1:0] = sw[9:8];
 
 
 endcase
